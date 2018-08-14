@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { hot } from "react-hot-loader";
 import "./App.css";
 
 import Heading from "./components/heading";
@@ -21,19 +20,25 @@ class TodoApp extends Component {
       ]
     };
   }
-  handleRemove() {
-    console.log("removed!");
-  }
+  handleRemove = taskId => {
+    // return all the task objects except the one with the given id (the del btn of which is clicked)
+    const tasks = this.state.tasks.filter(t => t.id !== taskId);
+    this.setState({ tasks }); // polluting the state of the tasks
+  };
   render() {
     const { tasks, heading, tasksHeading } = this.state;
     return (
       <div>
         <Heading heading={heading} />
-        <Tasks heading={tasksHeading} tasks={tasks} />
+        <Tasks
+          heading={tasksHeading}
+          tasks={tasks}
+          onRemove={this.handleRemove}
+        />
         <Actions />
       </div>
     );
   }
 }
 
-export default hot(module)(TodoApp);
+export default TodoApp;
