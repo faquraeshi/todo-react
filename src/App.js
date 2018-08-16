@@ -25,6 +25,15 @@ class TodoApp extends Component {
     const tasks = this.state.tasks.filter(t => t.id !== taskId);
     this.setState({ tasks }); // polluting the state of the tasks
   };
+
+  handleAddTask = () => {
+    console.log("A task is added!");
+  };
+
+  handleRemoveAll = () => {
+    this.setState({ tasks: [] });
+  };
+
   render() {
     const { tasks, heading, tasksHeading } = this.state;
     return (
@@ -35,7 +44,10 @@ class TodoApp extends Component {
           tasks={tasks}
           onRemove={this.handleRemove}
         />
-        <Actions />
+        <Actions
+          onRemoveAll={this.handleRemoveAll}
+          onAddingATask={this.handleAddTask}
+        />
       </div>
     );
   }
