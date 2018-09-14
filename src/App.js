@@ -26,8 +26,13 @@ class TodoApp extends Component {
     this.setState({ tasks }); // polluting the state of the tasks
   };
 
-  handleAddTask = () => {
-    console.log("A task is added!");
+  handleAddTask = e => {
+    e.preventDefault();
+    let inputValue = e.target.children[0].value;
+    const newTask = { id: this.state.tasks.length + 1, title: inputValue };
+    this.setState({
+      tasks: [...this.state.tasks, newTask]
+    });
   };
 
   handleRemoveAll = () => {
