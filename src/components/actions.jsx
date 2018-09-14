@@ -5,11 +5,7 @@ class Actions extends Component {
     return (
       <div>
         <form onSubmit={this.props.onAddingATask}>
-          <input
-            type="text"
-            name={this.props.title}
-            placeholder="What's to do?"
-          />
+          <input type="text" placeholder="What's to do?" />
           <button style={{ marginLeft: 10 }}>Add</button>
         </form>
 

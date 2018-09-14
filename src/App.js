@@ -29,10 +29,13 @@ class TodoApp extends Component {
   handleAddTask = e => {
     e.preventDefault();
     let inputValue = e.target.children[0].value;
-    const newTask = { id: this.state.tasks.length + 1, title: inputValue };
-    this.setState({
-      tasks: [...this.state.tasks, newTask]
-    });
+    let newTask = { id: this.state.tasks.length + 1, title: inputValue };
+    if (inputValue != "") {
+      this.setState({ tasks: [...this.state.tasks, newTask] });
+      e.target.reset();
+    } else {
+      return false;
+    }
   };
 
   handleRemoveAll = () => {
