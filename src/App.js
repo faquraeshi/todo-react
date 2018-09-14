@@ -30,7 +30,7 @@ class TodoApp extends Component {
     e.preventDefault();
     let inputValue = e.target.children[0].value;
     let newTask = { id: this.state.tasks.length + 1, title: inputValue };
-    if (inputValue != "") {
+    if (inputValue !== "" && /^[^-\s][\w\s-]+$/.test(inputValue)) {
       this.setState({ tasks: [...this.state.tasks, newTask] });
       e.target.reset();
     } else {
