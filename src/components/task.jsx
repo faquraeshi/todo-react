@@ -9,7 +9,7 @@ class Task extends Component {
           onClick={() => this.props.onRemove(this.props.task.id)}
           style={{ margin: 7 }}
         >
-          Remove
+          Remove Task
         </button>
       </li>
     );
